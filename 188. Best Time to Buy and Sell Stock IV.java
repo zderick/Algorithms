@@ -20,10 +20,26 @@ Explanation: Buy on day 2 (price = 2) and sell on day 3 (price = 6), profit = 6-
 */
 
 public int maxProfit(int k, int[] prices) {
+    if(prices == null || prices.length < 2 || k == 0) return 0;
+    
+    k = Math.min(k, prices.length);
 
+    int[] buy = new int[k];
+    int[] sell = new int[k];
 
+    Arrays.fill(buy, Integer.MIN_VALUE);
 
-
-
-
+    for(int i = 0; i < prices.length; i++){
+        for(int j = 0; j < k; j++){
+            if(j == 0){
+                buy[j] = Math.max(buy[j], -prices[i]);
+                sell[j] = Math.max(sell[j], buy[j] + prices[i]);
+            }
+            else{
+                buy[j] = Math.max(buy[j], sell[j-1]-prices[i]);
+                sell[j] = Math.max(sell[j], buy[j] + prices[i]);
+            }
+        }
+    }
+    return sell[k-1];
 }
