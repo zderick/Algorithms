@@ -27,7 +27,7 @@ public int maxProfit(int[] prices) {
     		minPrice = prices[i];
     	}
     	else{
-    		max = Math.max(max, prices[i] - minPrice);
+    		maxProfit = Math.max(maxProfit, prices[i] - minPrice);
     		minPrice = Math.min(minPrice, prices[i]);
     	}
     }
