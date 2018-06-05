@@ -12,7 +12,22 @@ Output: -1->0->3->4->5
 */
 
 public ListNode sortList(ListNode head) {
-        
+if(head == null || head.next == null) return head;
+
+    ListNode fast = head;
+    ListNode slow = head;
+    ListNode prev = null;
+    while(fast != null && fast.next != null){
+    	prev = slow;
+    	slow = slow.next;
+    	fast = fast.next.next;
+    }
+
+    prev.next = null;
+
+    ListNode firstHalf = sortList(head);
+    ListNode secondHalf = sortList(slow);
+    return mergeTwoLists(firstHalf, secondHalf);
 }
 
 public ListNode mergeTwoLists(ListNode a, ListNode b){
