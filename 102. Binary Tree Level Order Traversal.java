@@ -16,6 +16,7 @@ return its level order traversal as:
 ]
 */
 
+//Breadth First Search
 public List<List<Integer>> levelOrder(TreeNode root) {
 
 	List<List<Integer>> result = new ArrayList<>();
@@ -38,4 +39,24 @@ public List<List<Integer>> levelOrder(TreeNode root) {
 	}
 
 	return result;
+}
+
+
+//Depth First Search
+public List<List<Integer>> levelOrder(TreeNode root){
+	List<List<Integer>> result = new ArrayList<>();
+	if(root == null) return result;
+	helper(result, root, 0);
+	return result;
+}
+
+public void helper(List<List<Integer>> result, TreeNode root, int cur){
+	if(root == null) return;
+	if(result.size() == cur){
+		result.add(new ArrayList<>());
+	}
+
+	result.get(cur).add(root.val);
+	helper(result, root.left, cur + 1);
+	helper(result, root.right, cur + 1);
 }
