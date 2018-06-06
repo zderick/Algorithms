@@ -21,6 +21,7 @@ Note:
 0 <= fee < 50000.
 */
 
+//O(n) time, O(n) space
 public int maxProfit(int[] prices, int fee) {
 	int[] buy = new int[prices.length];
 	Arrays.fill(buy, Integer.MIN_VALUE);
@@ -37,4 +38,19 @@ public int maxProfit(int[] prices, int fee) {
 		}
 	}
 	return sell[prices.length-1];
+}
+
+
+//O(n) time, O(1) space
+public int maxProfit(int[] prices, int fee) {
+	int sell = 0;
+	int buy = Integer.MIN_VALUE;
+
+	for(int i = 0; i < prices.length; i++){
+		int prevSell = sell;
+		sell = Math.max(sell, buy + prices[i]);
+		buy = Math.max(buy, prevSell - prices[i] - fee);
+	}
+
+	return sell;
 }
