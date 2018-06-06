@@ -22,5 +22,19 @@ Note:
 */
 
 public int maxProfit(int[] prices, int fee) {
-	
+	int[] buy = new int[prices.length];
+	Arrays.fill(buy, Integer.MIN_VALUE);
+
+	int[] sell = new int[prices.length];
+
+	for(int i = 0; i < prices.length; i++){
+		if(i == 0){
+			buy[i] = -prices[i] - fee;
+		}
+		else{
+			buy[i] = Math.max(buy[i-1], sell[i-1]- prices[i] - fee);
+			sell[i] = Math.max(sell[i-1], prices[i] + buy[i-1]);
+		}
+	}
+	return sell[prices.length-1];
 }
