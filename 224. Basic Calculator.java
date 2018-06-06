@@ -18,7 +18,7 @@ Output: 23
 */
 
 
-    public int calculate(String s) {
+public int calculate(String s) {
     Deque<Integer> stack = new LinkedList<>();
     int sum = 0;
     int cur = 0;
