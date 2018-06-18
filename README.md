@@ -4,3 +4,5 @@
 * 344: [Reverse String](344.%20Reverse%20String.java)
 * 461: [Hamming Distance](https://github.com/zderick/Algorithms/blob/master/461.%20Hamming%20Distance.java)
  * 617: [Merge Two Binary Trees](https://github.com/zderick/Algorithms/blob/master/617.%20Merge%20Two%20Binary%20Trees.java)
+
+Updating this table of contents is currently is redundant. Questions and answers are above.
